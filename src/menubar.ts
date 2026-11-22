@@ -164,13 +164,15 @@ let appIconPromise: Promise<string | null> | null = null;
  * then scale to 20 pt at 1x (20 px) and @2x (40 px).
  */
 function prepareAppIcon(): Promise<string | null> {
+	// macOS purges the temp folder now and then, so regenerate the icon if the converted files have gone
+	const icon1x = join(tmpdir(), "minimize-to-menu-bar-icon.png");
+	const icon2x = join(tmpdir(), "minimize-to-menu-bar-icon@2x.png");
+	if(appIconPromise && !(existsSync(icon1x) && existsSync(icon2x))) appIconPromise = null;
 	if(!appIconPromise) {
 		appIconPromise = (async () => {
 			const icns = appBundlePath() + "/Contents/Resources/icon.icns";
 			if(!existsSync(icns)) return null;
 			const cropped = join(tmpdir(), "minimize-to-menu-bar-icon-crop.png");
-			const icon1x = join(tmpdir(), "minimize-to-menu-bar-icon.png");
-			const icon2x = join(tmpdir(), "minimize-to-menu-bar-icon@2x.png");
 			try {
 				await run("/usr/bin/sips", ["-s", "format", "png", "--cropToHeightWidth", "840", "840", icns, "--out", cropped]);
 				await run("/usr/bin/sips", ["-Z", "20", cropped, "--out", icon1x]);
