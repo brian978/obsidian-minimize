@@ -15,7 +15,7 @@ A *Minimize window* command is available for a hotkey.
 
 ## Install
 
-**With [BRAT](https://github.com/TfTHacker/obsidian42-brat):** *Add beta plugin* → `brian978/obsidian-minimize`. BRAT also installs updates.
+**With [BRAT](https://obsidian.md/plugins?id=obsidian42-brat):** *Add beta plugin* → `brian978/obsidian-minimize`. BRAT also installs updates.
 
 **Manually:**
 
