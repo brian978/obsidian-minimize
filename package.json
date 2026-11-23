@@ -1,6 +1,6 @@
 {
 	"name": "minimize-to-menu-bar",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Obsidian plugin: minimize the window when the last tab is closed; on macOS, hide it into the menu bar",
 	"private": true,
 	"license": "MIT",
