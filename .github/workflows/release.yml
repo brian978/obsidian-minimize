@@ -31,7 +31,17 @@ jobs:
       - run: npm ci
       - run: npm run build
 
+      # A zip holding the plugin folder, ready to unzip into <vault>/.obsidian/plugins/
+      - name: Package
+        run: |
+          id=$(node -p "require('./manifest.json').id")
+          mkdir -p "package/$id"
+          cp dist/main.js dist/manifest.json "package/$id/"
+          (cd package && zip -r "../$id-$GITHUB_REF_NAME.zip" "$id")
+          echo "ZIP=$id-$GITHUB_REF_NAME.zip" >> "$GITHUB_ENV"
+
+      # main.js and manifest.json are also attached on their own: BRAT installs from those
       - name: Create the release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" dist/main.js dist/manifest.json --title "$GITHUB_REF_NAME" --generate-notes
+        run: gh release create "$GITHUB_REF_NAME" "$ZIP" dist/main.js dist/manifest.json --title "$GITHUB_REF_NAME" --generate-notes

@@ -1,7 +1,7 @@
 {
 	"id": "minimize-to-menu-bar",
 	"name": "Minimize to Menu Bar",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"minAppVersion": "1.5.0",
 	"description": "Minimizes the window when the last tab is closed. On macOS it hides into the menu bar and leaves the Dock (unless pinned).",
 	"author": "brian978",

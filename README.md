@@ -19,8 +19,8 @@ A *Minimize window* command is available for a hotkey.
 
 **Manually:**
 
-1. Download `main.js` and `manifest.json` from the [latest release](https://github.com/brian978/obsidian-minimize/releases/latest).
-2. Copy both files into `<your vault>/.obsidian/plugins/minimize-to-menu-bar/`.
+1. Download `minimize-to-menu-bar-<version>.zip` from the [latest release](https://github.com/brian978/obsidian-minimize/releases/latest).
+2. Unzip it into `<your vault>/.obsidian/plugins/`. It creates the `minimize-to-menu-bar` folder.
 3. Enable **Minimize to Menu Bar** in *Settings → Community plugins*.
 
 ## Release
@@ -28,10 +28,10 @@ A *Minimize window* command is available for a hotkey.
 Bump `version` in `manifest.json`, merge, then push a tag with the same version:
 
 ```bash
-git tag 1.0.1 && git push origin 1.0.1
+git tag 1.0.2 && git push origin 1.0.2
 ```
 
-The [release workflow](.github/workflows/release.yml) builds the plugin and publishes a GitHub release with `main.js` and `manifest.json`.
+The [release workflow](.github/workflows/release.yml) builds the plugin and publishes a GitHub release with the zip, plus `main.js` and `manifest.json` for BRAT.
 
 ## Build
 
